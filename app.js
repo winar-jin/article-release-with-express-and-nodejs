@@ -9,9 +9,11 @@ const bodyParser = require('body-parser');
 const falsh = require('connect-flash');
 const expressValidator = require('express-validator');
 const session = require('express-session');
+const passport = require('passport');
+const database = require('./config/database');
 
 // connect to mongoDB
-mongoose.connect('mongodb://localhost:27017/nodekb');
+mongoose.connect(database.mongo);
 let db = mongoose.connection;
 db.on('error', (error) => {
   console.log(error);
@@ -68,6 +70,17 @@ app.use(expressValidator({
     };
   }
 }));
+
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || null;
+  next();
+});
 
 // Get -> return the index page for root
 app.get('/', function (req, res) {
