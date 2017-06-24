@@ -11,7 +11,15 @@ little article release sys using express, node.js and mongoDB.
 
 `npm install`
 
-3. run the server 
+3. if you haven't install bower on your machine 
+
+ `npm install -g bower`
+
+ then , install **bootstrap** and **jquery**
+
+  `bower install jquery` && `bower install bootstrap` 
+
+4. run the server 
 
 `nodemon`
 
