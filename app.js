@@ -85,7 +85,9 @@ app.get('/', function (req, res) {
 
 // any route to /articles will go to the articles routes
 let articles = require('./routes/articles.js');
+let users = require('./routes/users.js');
 app.use('/articles', articles);
+app.use('/users', users);
 
 // listen on port 3000
 app.listen(3000, function (req, res) {

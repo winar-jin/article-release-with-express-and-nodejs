@@ -21,6 +21,11 @@ html
               a(href='/') Home
             li
               a(href='/articles/add') Add
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/users/login') Login
+            li
+              a(href='/users/register') Register
     .container
       != messages('message', locals)
       if errors
