@@ -62,6 +62,10 @@ router.post('/register',(req,res) => {
 });
 
 router.get('/login',(req,res) => {
+    if(req.user){
+        req.flash('danger','You have logged in!');
+        res.redirect('/');
+    }
     res.render('login');
 });
 
@@ -74,6 +78,10 @@ router.post('/login',(req,res,next) => {
 });
 
 router.get('/logout', (req,res) => {
+    if(!req.user){
+        req.flash('danger','Please log in');
+        res.redirect('/users/login');
+    }
     req.logout();
     req.flash('success','you were log out');
     res.redirect('/users/login');
