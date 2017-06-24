@@ -23,7 +23,7 @@ little article release sys using express, node.js and mongoDB.
 
 `nodemon`
 
-4. browse the web
+5. browse the web
 
 `http://localhost:3000`
 
